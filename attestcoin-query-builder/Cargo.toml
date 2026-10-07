@@ -2,10 +2,11 @@
 edition = { workspace = true }
 rust-version = { workspace = true }
 license = { workspace = true }
-name = "usc-query-builder"
+repository = { workspace = true }
+name = "attestcoin-query-builder"
 publish = true
-version = "0.8.0"
-description = "Query builder library. Used for the construction of USC proving queries."
+version = "0.9.0"
+description = "Query builder library. Used for the construction of Attestcoin proving queries."
 
 [dependencies]
 alloy = { workspace = true }
@@ -13,7 +14,7 @@ alloy-json-abi = { workspace = true, features = ["serde_json"] }
 async-trait = { version = "0.1" }
 hex = { workspace = true }
 
-usc-abi-encoding = { workspace = true }
+attestcoin-abi-encoding = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["full"] }

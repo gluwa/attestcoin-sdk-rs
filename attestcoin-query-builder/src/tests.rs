@@ -7,7 +7,7 @@ use crate::{
 };
 
 use alloy::consensus::Transaction;
-use usc_abi_encoding::{abi::abi_encode, common::EncodingVersion};
+use attestcoin_abi_encoding::{abi::abi_encode, common::EncodingVersion};
 
 const ENCODING: EncodingVersion = EncodingVersion::V1;
 

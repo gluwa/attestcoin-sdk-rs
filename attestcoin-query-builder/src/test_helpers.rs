@@ -7,8 +7,8 @@ use alloy::{
     rpc::types::TransactionReceipt,
 };
 use async_trait::async_trait;
+use attestcoin_abi_encoding::common::{compute_v, compute_y_parity};
 use std::str::FromStr;
-use usc_abi_encoding::common::{compute_v, compute_y_parity};
 
 use crate::abi::models::QueryBuilderError;
 use crate::abi::query_builder::AbiProvider;

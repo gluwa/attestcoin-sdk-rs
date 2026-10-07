@@ -1,9 +1,10 @@
 [workspace]
-members = ["usc-abi-encoding", "usc-query-builder"]
+members = ["attestcoin-abi-encoding", "attestcoin-query-builder"]
 resolver = "3"
 
 [workspace.package]
 license = "Unlicense"
+repository = "https://github.com/gluwa/attestcoin-sdk-rs"
 edition = "2024"
 rust-version = "1.88"
 
@@ -29,4 +30,4 @@ hex = { version = "0.4" }
 serde = { version = "1.0" }
 serde_json = { version = "1.0" }
 
-usc-abi-encoding = { path = "usc-abi-encoding" }
+attestcoin-abi-encoding = { path = "attestcoin-abi-encoding" }
