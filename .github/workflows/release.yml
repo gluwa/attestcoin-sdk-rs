@@ -9,12 +9,12 @@ name: Release to crates.io
         type: choice
         description: Publish only the selected package
         options:
-        - usc-abi-encoding
-        - usc-query-builder
+        - attestcoin-abi-encoding
+        - attestcoin-query-builder
   push:
     tags:
-      - usc-abi-encoding-**
-      - usc-query-builder-**
+      - attestcoin-abi-encoding-**
+      - attestcoin-query-builder-**
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}

@@ -15,8 +15,8 @@ updates:
   - package-ecosystem: "cargo"
     directories:
       - "/"
-      - "/usc-abi-encoding"
-      - "/usc-query-builder"
+      - "/attestcoin-abi-encoding"
+      - "/attestcoin-query-builder"
     groups:
       prod-dependencies:
         dependency-type: "production"

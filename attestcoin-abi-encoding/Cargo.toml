@@ -2,10 +2,11 @@
 edition = { workspace = true }
 rust-version = { workspace = true }
 license = { workspace = true }
-name = "usc-abi-encoding"
+repository = { workspace = true }
+name = "attestcoin-abi-encoding"
 publish = true
-version = "0.6.0"
-description = "Ethereum ABI encoding library. Used for the encoding of transactions and proof submission in the Creditcoin USC network."
+version = "0.7.0"
+description = "Ethereum ABI encoding library. Used for the encoding of transactions and proof submission in the Attestcoin protocol."
 
 [dependencies]
 alloy = { workspace = true }

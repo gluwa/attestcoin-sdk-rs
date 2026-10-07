@@ -9,8 +9,8 @@ name: Yank a crate from crates.io
         type: choice
         description: Yank the selected package
         options:
-        - usc-abi-encoding
-        - usc-query-builder
+        - attestcoin-abi-encoding
+        - attestcoin-query-builder
       VERSION:
         required: true
         type: string
