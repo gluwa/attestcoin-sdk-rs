@@ -20,7 +20,10 @@ use crate::abi::{
     query_builder_for_function::QueryBuilderForFunction,
     utils::{WORD_SIZE, make_offsets_absolute},
 };
-use attestcoin_abi_encoding::{abi::abi_encode, common::EncodingVersion};
+use attestcoin_abi_encoding::{
+    abi::{TxRxInput, abi_encode},
+    common::EncodingVersion,
+};
 
 #[async_trait]
 pub trait AbiProvider {
@@ -62,7 +65,13 @@ where
         encoding: EncodingVersion,
     ) -> Result<QueryBuilder<T>, QueryBuilderError> {
         // encode the transaction
-        let encoded = match abi_encode(tx.clone(), rx.clone(), encoding) {
+        let encoded = match abi_encode(
+            TxRxInput::Ethereum {
+                tx: tx.clone(),
+                rx: rx.clone(),
+            },
+            encoding,
+        ) {
             Some(encoded_result) => encoded_result,
             None => {
                 return Err(QueryBuilderError::FailedToAbiEncode);

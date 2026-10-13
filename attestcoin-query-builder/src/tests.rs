@@ -7,7 +7,10 @@ use crate::{
 };
 
 use alloy::consensus::Transaction;
-use attestcoin_abi_encoding::{abi::abi_encode, common::EncodingVersion};
+use attestcoin_abi_encoding::{
+    abi::{TxRxInput, abi_encode},
+    common::EncodingVersion,
+};
 
 const ENCODING: EncodingVersion = EncodingVersion::V1;
 
@@ -23,7 +26,14 @@ async fn legacy_tx_queried_fields_match_expected() {
     assert!(tx.inner.is_legacy());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -97,7 +107,14 @@ async fn queried_receipt_fields_match_expected() {
     assert!(tx.inner.is_legacy());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -142,7 +159,14 @@ async fn event_builder_queried_fields_match_expected() {
     assert!(tx.inner.is_legacy());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     println!("Encoded ABI: {:?}", encoded.abi());
 
@@ -211,7 +235,14 @@ async fn function_builder_queried_fields_match_expected() {
     assert!(tx.inner.is_legacy());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -261,7 +292,14 @@ async fn type_1_tx_queried_fields_match_expected() {
     assert!(tx.inner.is_eip2930());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -300,7 +338,14 @@ async fn type_2_tx_queried_fields_match_expected() {
     assert!(tx.inner.is_eip1559());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -347,7 +392,14 @@ async fn type_3_tx_queried_fields_match_expected() {
     assert!(tx.inner.is_eip4844());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
@@ -385,7 +437,14 @@ async fn type_4_tx_queried_fields_match_expected() {
     assert!(tx.inner.is_eip7702());
 
     // Encode transaction
-    let encoded = abi_encode(tx.clone(), rx.clone(), ENCODING).unwrap();
+    let encoded = abi_encode(
+        TxRxInput::Ethereum {
+            tx: tx.clone(),
+            rx: rx.clone(),
+        },
+        ENCODING,
+    )
+    .unwrap();
 
     let mut query_builder = QueryBuilder::create_from_transaction(tx.clone(), rx.clone(), ENCODING)
         .expect("creating queryable builder should work");
