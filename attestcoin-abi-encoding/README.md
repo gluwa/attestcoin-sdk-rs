@@ -52,6 +52,11 @@ The library supports all current Ethereum transaction types with optimized chunk
 | **Type 2** | EIP-1559 (Dynamic Fees) | 3 | Max fee per gas, priority fees |
 | **Type 3** | EIP-4844 (Blob transactions) | 4 | Blob versioned hashes, blob gas |
 | **Type 4** | EIP-7702 (Account Abstraction) | 4 | Authorization lists, delegation |
+| **Type 0x7e** | OP-Stack deposit (Base, OP Mainnet, ...) | 3 | `sourceHash`, `mint`, `isSystemTx`; unsigned |
+
+Types 0 to 4 are encoded from alloy's `Ethereum` types. The OP-Stack `0x7e` deposit is encoded from
+`abi::op_stack::DepositTransaction`, because alloy's `Ethereum` types reject that type. The leaf
+layout is documented in [`abi::op_stack`](src/abi/op_stack.rs).
 
 ## Chunk Structure
 
@@ -87,11 +92,11 @@ Additional authorization lists, blob data, or other complex structures.
 ## Usage
 
 ```rust
-use attestcoin_abi_encoding::{abi_encode, EncodingVersion};
-use alloy::rpc::types::{Transaction, TransactionReceipt};
+use attestcoin_abi_encoding::{abi::{abi_encode, TxRxInput}, common::EncodingVersion};
 
-// Encode a transaction and receipt
-let result = abi_encode(transaction, receipt, EncodingVersion::V1)?;
+// Encode a transaction and receipt. The variant picks the leaf layout:
+// `TxRxInput::Ethereum` for types 0-4, `TxRxInput::OpDeposit` for OP-Stack `0x7e` deposits.
+let result = abi_encode(TxRxInput::Ethereum { tx: transaction, rx: receipt }, EncodingVersion::V1)?;
 
 // Get the encoded bytes
 let encoded_bytes = result.abi();
@@ -106,7 +111,7 @@ The final encoded output follows this structure:
 
 ```rust
 (
-    transactionType: uint8,    // 0, 1, 2, 3, or 4
+    transactionType: uint8,    // 0, 1, 2, 3, 4, or 126 (OP-Stack deposit)
     chunks: bytes[]           // Array of ABI-encoded chunks
 )
 ```

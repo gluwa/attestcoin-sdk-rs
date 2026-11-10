@@ -5,7 +5,7 @@ license = { workspace = true }
 repository = { workspace = true }
 name = "attestcoin-abi-encoding"
 publish = true
-version = "0.7.0"
+version = "0.8.0"
 description = "Ethereum ABI encoding library. Used for the encoding of transactions and proof submission in the Attestcoin protocol."
 
 [dependencies]

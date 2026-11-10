@@ -5,7 +5,7 @@ license = { workspace = true }
 repository = { workspace = true }
 name = "attestcoin-query-builder"
 publish = true
-version = "0.9.0"
+version = "0.10.0"
 description = "Query builder library. Used for the construction of Attestcoin proving queries."
 
 [dependencies]
